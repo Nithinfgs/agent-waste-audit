@@ -1,0 +1,24 @@
+Session sample_session
+  13 turns, 13 tool calls, 54,439 new tokens, 240,500 cache-read tokens
+  avoidable ~13,080 tokens  [#####...............] 24.0% of new tokens
+  plus ~57,596 tokens re-read from cache on later turns
+  - [oversized_output] Read /app/server.py returned ~9,000 tokens
+      ~4,000 tokens (+48,000 carried) - 36,000 characters; threshold 20,000
+      tip: Narrow it: grep/head/tail, Read with offset+limit, or a tighter glob.
+  - [redundant_read] /app/server.py re-read unchanged
+      ~9,000 tokens (+9,000 carried) - first read at turn 0, again at turn 11
+      tip: Reference earlier output, or read only the needed line range.
+  - [redundant_read] /app/utils.py re-read unchanged
+      ~60 tokens (+420 carried) - first read at turn 4, again at turn 5
+      tip: Reference earlier output, or read only the needed line range.
+  - [retry_loop] Bash: pytest -x ran 3x and failed identically
+      ~18 tokens (+171 carried) - repeat turns: 2, 3
+      tip: Stop after the second identical failure; change the approach or inspect the error.
+  - [repeated_call] Bash: git status ran 3x and returned identical output
+      ~2 tokens (+5 carried) - repeat turns: 9, 10
+      tip: Cache the result in notes or rely on the earlier output.
+  - [cache_expiry] turn 11 rewrote 26,000 cached tokens
+      ~0 tokens (+0 carried) - 13 min idle gap exceeded the 5-minute cache window
+      tip: Expected after a long pause; not counted as avoidable.
+
+Token counts for tool results are estimated at 4 characters/token.
